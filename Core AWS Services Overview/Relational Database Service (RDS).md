@@ -96,3 +96,17 @@
         - Network in/out must be encrypted using SSL
         - IAM is used to centrally manage users instead of DB credentials
         - We can manage IAM roles and EC2 instance profiles for easy integration
+
+### Security Summary
+
+- Encryption at rest:
+    - It is done only when the database is created
+    - To encrypt an existing database, we have create a snapshot, copy it as encrypted, and create an encrypted database from the snapshot
+- Our responsibility:
+    - Check the ports/IP/security groups inbound rules
+    - Take care of database user creation and permissions or manage them through IAM
+    - Create a database with or without public access
+    - Ensure parameter groups or DB is configured to only allow SSL connections
+- AWS responsibility:
+    - DB patching
+    - Underlying OS patching and updates
