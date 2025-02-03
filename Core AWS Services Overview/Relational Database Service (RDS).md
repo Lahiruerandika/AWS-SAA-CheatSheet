@@ -34,3 +34,47 @@
     - Retention can be as long as the user wants
     - Helpful for retaining the state of the database for a longer period of time
 
+## RDS Read Replicas
+
+- Read replicas help to scale the read operations
+- We can create up to 15 read replicas
+- These replicas can be within AZ, cross AZ or in different regions
+- The data between the main database and the read replicas is replicated **asynchronously** => reads are eventually consistent
+- Read replicas can be promoted into their own database
+- Use case for read replicas:
+    - Production database is up and running taking on normal load
+    - There is a new feature for running some reporting for analytics which may cause slow downs and may overload the database
+    - To fix this we can create read replicas for reporting
+- Read replicas are used for SELECT operations (not INSERT, UPDATE, DELETE)
+- Network cost for read replicas:
+    - In AWS there is network cost if data goes from one AZ to another
+    - In case of cross AZ replication, additional costs may incur because of network traffic
+    - To reduce costs, we could have the read replicas in the same AZ
+
+## RDS Multi AZ (Disaster Recovery)
+
+- RDS Multi AZ replication is done using **synchronous** replication
+- In case of multi AZ configuration we get one DNS name
+- In case of the main database goes down, the traffic is automatically re-routed to the failover database
+- Multi AZ is not used for scaling
+- The read replicas can be set up as Multi AZ for Disaster Recovery
+
+## RDS Security
+
+### Encryption
+
+- AWS RDS provides rest encryption: possibility to encrypt the master and read replicas with AWS KMS - AES-256 encryption
+    - Encryption has to be defined at the launch time
+    - **If the master is not encrypted, the read replicas cannot be encrypted**
+    - Transparent Data Encryption (TDE) is available for Oracle and SQL Server
+- In-flight encryption: uses SSL certificates to encrypt data from client to RDS in flight
+    - It is required SSL a trust certificate when connecting to database
+- Encrypting RDS backups:
+    - Snapshots of un-encrypted RDS databases are un-encrypted
+    - Snapshots of encrypted RDS databases are encrypted
+    - We can copy an un-encrypted snapshot into an encrypted one
+- Encrypt an un-encrypted RDS database:
+    - Create a snapshot
+    - Copy the snapshot and enable encryption for the snapshot
+    - Restore the database from the encrypted snapshot
+    - Migrate application from the old database to the new one and delete the old database
