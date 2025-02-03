@@ -78,3 +78,21 @@
     - Copy the snapshot and enable encryption for the snapshot
     - Restore the database from the encrypted snapshot
     - Migrate application from the old database to the new one and delete the old database
+
+### Network Security and IAM
+
+- Network security:
+    - RDS databases are usually deployed within a private subnet
+    - RDS security works by leveraging security groups (similar to EC2), they control who can communicate with the database instance
+- Access management:
+    - There are IAM policies which help control who can manage an AWS RDS database (through the RDS API)
+    - Traditional username/password can be used to login into the database
+    - IAM-based authentication can be used to login into MySQL and PostgreSQL 
+- IAM authentication:
+    - IAM database authentication works with MySQL and PostgreSQL
+    - We don't need a password to authenticate, just an authentication token obtained through IAM and RDS API calls
+    - The token has a lifetime of 15 minutes
+    - Benefits:
+        - Network in/out must be encrypted using SSL
+        - IAM is used to centrally manage users instead of DB credentials
+        - We can manage IAM roles and EC2 instance profiles for easy integration
