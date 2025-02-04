@@ -14,3 +14,22 @@
 - In Aurora only one instance is used for writes (master instance)
 - In case of master failure, the failover happens in less than 30 seconds
 - Provides support for cross region replication
+
+## Aurora DB Cluster
+
+- In Aurora we always have one writer endpoint
+- We can have up to 15 read replicas
+- Read replicas can be inside an auto scaling groups which provides the right read capacity all the time
+- Read endpoint: basically does load balancing between read replicas
+- Aurora endpoints: we can map each connection to the appropriate instance or group of instances based on an use case. For example, to perform DDL statements we can connect to whichever instance is the primary instance. To perform queries, we can connect to the reader endpoint, with Aurora automatically performing load-balancing among all the Aurora Replicas. For clusters with DB instances of different capacities or configurations, we can connect to custom endpoints associated with different subsets of DB instances
+- Custom endpoints: provide load-balanced database connections based on criteria other than the read-only or read-write capability of the DB instances. For example, we might define a custom endpoint to connect to instances that use a particular AWS instance class or a particular DB parameter group. Then we might tell particular groups of users about this custom endpoint. For example, we might direct internal users to low-capacity instances for report generation or ad hoc (one-time) querying, and direct production traffic to high-capacity instances
+
+## Aurora Security
+
+- It is similar to basic RDS security, because it is using the same engine under the hood
+- Provides encryption at rest using KMS
+- Provides automated backups, snapshots and replicas are also encrypted
+- Encryption in flight is done using SSL
+- Possibility to authenticate using IAM token
+- The Aurora instance is protected with security groups (just like basic RDS)
+- There is no way to SSH into an Aurora instance
