@@ -33,3 +33,11 @@
 - Possibility to authenticate using IAM token
 - The Aurora instance is protected with security groups (just like basic RDS)
 - There is no way to SSH into an Aurora instance
+
+## Aurora Serverless
+
+- Provides automated database instantiation and auto-scaling based on actual usage
+- Recommended for infrequent, intermittent or unpredictable workloads
+- No capacity planning is needed
+- Users pay per seconds, can be cost-effective
+
