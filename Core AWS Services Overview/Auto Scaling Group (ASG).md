@@ -45,3 +45,18 @@
     1. Send a custom metric request to CloudWatch (PutMetric API)
     2. Create a CloudWatch alarm to react to values of the metric
     3. Use the CloudWatch alarm as a scaling policy for ASG
+
+    ## ASG Summary
+
+- Scaling policies can be on CPU, Network, etc. and can even be based on custom metrics or based on a schedule
+- ASGs can use launch configurations or launch templates (newer version)
+    - Launch configurations allow to specify one instance type
+    - Launch templates allow to use a spot fleet of instances
+- To update an ASG, we must provide a new launch configuration/template. The underlying EC2 instances will be replaced over time
+- IAM roles attached to an ASG will be assigned to the launched EC2 instances
+- ASGs are free. We pay for the underlying resources being launched (EC2 instances, attached EBS volumes, etc.)
+- Having instances under an ASG means that if they get terminated for any reason, the ASG will automatically create new ones as a replacement
+- ASG can terminate instances marked as unhealthy by a load balancer and obviously replace them
+- Health checks - we can have 2 types of health checks:
+    - EC2 health checks - instances is recreated if the EC2 instance fails to respond to health checks
+    - ELB health checks - instance is recreated if the ELB health checks fail, meaning that the application is down for whatever reason
