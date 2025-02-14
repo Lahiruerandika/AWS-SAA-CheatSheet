@@ -73,3 +73,12 @@
 - **Scheduled Actions**
     - Can be used if we can anticipate scaling based on known usage patterns
     - Example: increase the min capacity to 10 at 5 PM on Fridays
+
+### Scaling Cool-downs
+
+- The cool-down period helps to ensure that our ASG doesn't launch or terminate additional instances before the previous scaling activity takes effect
+- In addition to default cool-down for ASG we can create cool-downs that apply to specific *simple scaling policy*
+- A scaling-specific cool-down overrides the default cool-down period
+- Common use case for scaling-specific cool-downs is when a scale-in policy terminates instances based in a criteria or metric. Because this policy terminates instances, an ASG needs less time to determine wether to terminate additional instances
+- If the default cool-down period of 300 seconds is too long, we can reduce costs by applying a scaling-specific cool-down of 180 seconds for example
+- If our application is scaling up and down multiple times each hour, we can modify the ASG cool-down timers and the CloudWatch alarm period that triggers the scale
