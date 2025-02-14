@@ -10,3 +10,11 @@
     - Multi AZ with Failover Capability
 - Since it is a managed solution, AWS takes care of OS maintenance, patching, optimization, setup, 
 monitoring, failure recovery and backups
+
+## ElastiCache Solution Architecture 
+
+### DB Cache
+
+- Application queries the ElastiCache first. If no data is available for the query (cache miss), the application gets the data from RDS and stores it into the cache
+- Caching helps relieve the load from the database
+- Cache must have an invalidation strategy to make sure only the most current data is stored in the cache
