@@ -60,3 +60,16 @@
 - Health checks - we can have 2 types of health checks:
     - EC2 health checks - instances is recreated if the EC2 instance fails to respond to health checks
     - ELB health checks - instance is recreated if the ELB health checks fail, meaning that the application is down for whatever reason
+
+## ASG Scaling Policies
+
+- **Target Tracking Scaling**
+    - Most simple and easy to setup
+    - Example: we want the average ASG CPU to stay around 40%
+- **Simple/Step Scaling**
+    - Example: 
+        - When a CloudWatch alarm is triggered (example average CPU > 70%), then add 2 units
+        - When a CloudWatch alarm is triggered (example average CPU < 30%), then remove 1 unit
+- **Scheduled Actions**
+    - Can be used if we can anticipate scaling based on known usage patterns
+    - Example: increase the min capacity to 10 at 5 PM on Fridays
