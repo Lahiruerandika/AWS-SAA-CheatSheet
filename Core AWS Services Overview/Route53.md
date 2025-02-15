@@ -20,3 +20,28 @@ This guide provides step-by-step instructions to configure AWS Route 53 for a Gi
   - Health checks.
   - Routing policies: simple, failover, geolocation, latency, weighted, multi-value.
 - We pay $0.5 per month per hosted zone.
+
+## DNS Records TTL (Time to Live)
+
+- TTL is a way for web browsers and clients to cache the response of the DNS query.
+- The reason for caching is to avoid overloading the DNS.
+- The client caches the DNS response for the duration of the TTL value (duration is in seconds).
+- **High TTL (24 hours):**
+  - Less traffic for DNS.
+  - Possibility of outdated records.
+- **Low TTL (60 seconds):**
+  - More traffic on DNS.
+  - DNS records won’t be outdated for long, making changes easier.
+- **TTL is mandatory for each DNS record!**
+
+## CNAME Records vs Alias Records
+
+- AWS resources usually expose an AWS hostname.
+- **CNAME (Canonical Name Record):**
+  - Points a domain name to another domain name (e.g., `app.mydomain.com` → `other.domain.com`).
+  - **CNAME records work only for non-root domains!** (e.g., `something.rootdomain.com`).
+- **Alias Records:**
+  - Point a hostname to an AWS resource (e.g., `app.mydomain.com` → `something.amazonaws.com`).
+  - Alias records work for both root and non-root domains.
+  - They are free of charge.
+  - They support health checks.
