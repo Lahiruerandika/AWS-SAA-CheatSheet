@@ -96,3 +96,53 @@ This guide provides step-by-step instructions to configure AWS Route 53 for a Gi
 - Routes traffic to multiple resources while associating Route 53 health checks.
 - Returns up to **8 healthy records** per query.
 - **Not a substitute for Elastic Load Balancer!**
+
+## Route 53 as a Registrar
+
+- A **domain name registrar** is an organization managing the reservation of internet domain names.
+- Some domain registrars: **GoDaddy, Google Domains, Route 53**.
+- It is possible to use a **third-party domain registrar** with AWS.
+- Steps to use a third-party domain:
+  1. Create a **hosted zone** in Route 53.
+  2. Update **NS records** on the third-party registrar’s website to use Route 53 name servers.
+
+## Steps to Configure AWS Route 53 for GitLab
+
+### 1. Create a Hosted Zone in AWS Route 53
+1. Sign in to the [AWS Management Console](https://aws.amazon.com/console/).
+2. Navigate to **Route 53**.
+3. Click **Hosted Zones**.
+4. Click **Create Hosted Zone**.
+5. Enter your domain name and select **Public Hosted Zone**.
+6. Click **Create Hosted Zone**.
+
+### 2. Obtain Name Servers
+1. After creating the hosted zone, go to **Hosted Zone Details**.
+2. Copy the **Name Servers (NS)**.
+3. Update your domain registrar with these name servers.
+
+### 3. Create DNS Records
+1. Inside your hosted zone, click **Create Record**.
+2. Choose **Record Type** (A, CNAME, MX, etc.).
+3. Enter the **Record Name** (e.g., `gitlab.example.com`).
+4. Enter the **Value** (IP or CNAME of your GitLab instance).
+5. Select **Routing Policy** (typically **Simple Routing**).
+6. Click **Create Record**.
+
+### 4. Configure GitLab for Custom Domain
+1. Go to **GitLab** > **Settings** > **Pages**.
+2. Add your custom domain (`gitlab.example.com`).
+3. Verify ownership by adding the TXT record to Route 53.
+4. Enable HTTPS (optional but recommended).
+
+### 5. Verify the Configuration
+- Use `nslookup gitlab.example.com` or `dig gitlab.example.com`.
+- Ensure correct IP or CNAME resolution.
+- Open `https://gitlab.example.com` in a browser.
+
+## Conclusion
+By following this guide, you have successfully configured AWS Route 53 with GitLab, ensuring seamless domain resolution.
+
+---
+
+*Last updated: [February 15, 2025]*
