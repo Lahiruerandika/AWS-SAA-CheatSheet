@@ -17,3 +17,11 @@
         - EC2 instance
         - S3 website (must enable the static website functionality on the bucket)
         - Any other HTTP backend
+
+## CloudFront Geo Restriction
+
+- CloudFront can restrict access to the distribution based on geographic location.
+- It provides:
+    - **Whitelisting:** Allows users to access the content if they are from countries on the approved list.
+    - **Blacklisting:** Denies access for users from countries listed on the banned list.
+- The country is determined using a third-party Geo-IP database.
