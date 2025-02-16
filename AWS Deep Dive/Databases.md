@@ -39,3 +39,19 @@ There are several databases on AWS to choose from. Below are some guiding questi
 - **Reliability:** Multi-AZ feature ensures failover support.
 - **Performance:** Depends on EC2 instance type and EBS volume. Read replicas are available, but RDS does not auto-scale.
 - **Cost:** Pay per hour based on provisioned EC2 and EBS usage.
+
+## Amazon Aurora
+
+- Fully managed, part of RDS, compatible with PostgreSQL and MySQL.
+- Data is replicated six times across three Availability Zones.
+- Auto-healing capabilities with auto-scaling read replicas (global replicas supported).
+- **Serverless Aurora option available.**
+- **Use cases:** Similar to RDS but with better performance, less maintenance, and higher flexibility at a slightly higher cost.
+
+### Aurora for Solutions Architects
+
+- **Operations:** Reduced manual operations, auto-scaling storage.
+- **Security:** AWS manages OS security; users handle KMS, SG, IAM policies, and SSL.
+- **Reliability:** Multi-AZ, highly available, serverless option.
+- **Performance:** 5x faster performance compared to other RDS types, supports up to 15 read replicas.
+- **Cost:** Pay per EC2 instance and storage usage; potentially lower cost than enterprise-grade databases like Oracle.
