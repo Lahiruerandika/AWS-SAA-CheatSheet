@@ -12,3 +12,11 @@ There are several databases on AWS to choose from. Below are some guiding questi
 - Do we need a strict schema or a flexible schema? Do we require reporting capabilities or advanced search functionality?
 - What are the licensing costs? Can we switch to a cloud-native database such as Aurora or DynamoDB?
 
+## Database Types on AWS
+
+- **Relational Databases (RDBMS) - SQL/OLTP:** Amazon RDS, Aurora – Ideal for joins and normalized data.
+- **NoSQL Databases:** DynamoDB, ElastiCache (key/value pairs), Neptune (graph-based), DocumentDB (JSON) – No joins, no SQL.
+- **Object Storage:** S3 (large object storage) / Glacier (backups, archiving).
+- **Data Warehouse - SQL Analytics/BI:** Redshift (OLAP), Athena.
+- **Search Engines:** OpenSearch (formerly ElasticSearch) – Full-text search and unstructured searches.
+- **Graph Databases:** Neptune – Best suited for relationship-based data.
