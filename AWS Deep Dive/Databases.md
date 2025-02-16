@@ -20,3 +20,22 @@ There are several databases on AWS to choose from. Below are some guiding questi
 - **Data Warehouse - SQL Analytics/BI:** Redshift (OLAP), Athena.
 - **Search Engines:** OpenSearch (formerly ElasticSearch) – Full-text search and unstructured searches.
 - **Graph Databases:** Neptune – Best suited for relationship-based data.
+
+## Amazon RDS
+
+- Managed relational database service supporting PostgreSQL, MySQL, Oracle, and SQL Server.
+- AWS provisions an EC2 instance behind the scenes with an EBS volume.
+- Supports multi-AZ deployment and read replicas.
+- Security: IAM, security groups, KMS, SSL.
+- Backup, snapshot, and point-in-time restore functionalities.
+- Managed and scheduled maintenance.
+- Monitoring through CloudWatch.
+- **Use cases:** Storing relational datasets, performing SQL queries, handling transactional inserts, deletes, and updates.
+
+### RDS for Solutions Architects
+
+- **Operations:** Small downtime during failovers, maintenance, and scaling. Restoring snapshots requires manual intervention.
+- **Security:** AWS manages OS security; users configure KMS, SG, IAM policies, user authorization, and SSL.
+- **Reliability:** Multi-AZ feature ensures failover support.
+- **Performance:** Depends on EC2 instance type and EBS volume. Read replicas are available, but RDS does not auto-scale.
+- **Cost:** Pay per hour based on provisioned EC2 and EBS usage.
