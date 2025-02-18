@@ -22,3 +22,25 @@
 ### Warnings
 
 - We should never set our logging bucket as the monitored bucket! This may create a logging loop, causing the bucket size to grow exponentially.
+
+## S3 Replication
+
+- To enable replication:
+    - Versioning must be enabled on both the source and destination buckets.
+- There are two types of replication:
+    - **Cross-Region Replication (CRR):** Buckets are in different regions.
+        - Used for compliance, lower latency access, and replication across accounts.
+    - **Same-Region Replication (SRR):** Buckets are in the same region.
+        - Used for log aggregation and live replication between production and test accounts.
+- In both cases, the buckets can be in separate accounts.
+- Copying between replica buckets happens asynchronously (it is very quick).
+- To copy between replicas, an IAM permission must be assigned to the source bucket.
+
+### Replication Notes
+
+- Only new objects are replicated after replication is activated (no retroactive replication).
+- For **DELETE** operations:
+    - Deletion **without** a version ID: A delete marker is added to the object. **Deletion is not replicated**.
+    - Deletion **with** a version ID: The object is deleted in the source bucket. **Deletion is not replicated**.
+- **There is no replication chaining!**
+
