@@ -44,3 +44,18 @@
     - Deletion **with** a version ID: The object is deleted in the source bucket. **Deletion is not replicated**.
 - **There is no replication chaining!**
 
+## S3 Pre-Signed URLs
+
+- We can generate pre-signed URLs using the SDK and the CLI.
+- Pre-signed URLs have a default expiration time of **3600 seconds**. This can be changed using the `--expires-in` argument.
+- Users with a pre-signed URL will inherit the permissions of the user who generated the URL.
+
+## S3 Storage Classes
+
+- **Amazon S3 Standard - General Purpose**
+- **Amazon S3 Standard - Infrequent Access (IA)**
+- **Amazon S3 One Zone - Infrequent Access**
+- **Amazon S3 Intelligent Tiering**
+- **Amazon S3 Glacier**
+- **Amazon S3 Glacier Deep Archive**
+- **Amazon S3 Reduced Redundancy Storage (deprecated)**
