@@ -107,3 +107,76 @@
     - **Standard** (12 hours).
     - **Bulk** (48 hours).
 - **Minimum storage duration: 180 days**.
+
+## S3 - Moving Between Storage Classes
+
+- Objects can be transitioned between storage classes to **save costs**.
+- General rules:
+    - **Infrequently accessed** documents → **Move to STANDARD-IA**.
+    - **Objects that don’t need real-time access** → **Move to Glacier or Deep Archive**.
+- Moving objects can be done **manually** or via a **lifecycle configuration**.
+- **Lifecycle rules**:
+    - **Transition actions**: Define when objects should be moved to another storage class.
+    - **Expiration actions**: Define when objects should be **deleted**.
+        - Can delete **old versions** of files if versioning is enabled.
+        - Can clean up **incomplete multi-part uploads**.
+- Rules can be applied based on:
+    - Object **prefix**.
+    - **Tags** assigned to objects.
+
+## S3 - Performance
+
+- Amazon S3 automatically scales to handle high request rates with a latency of **100-200ms** to retrieve the first byte.
+- Performance limits:
+    - **3500** PUT/COPY/POST/DELETE requests per second per **prefix** in a bucket.
+    - **5500** GET/HEAD requests per second per **prefix** in a bucket.
+
+### S3 KMS Limitation
+
+- S3 performance **can be impacted** by KMS limits if encryption is enabled using **SSE-KMS**.
+- Additional requests to **KMS** will count against the **KMS quota**.
+- **KMS throttling** may reduce S3 performance.
+- **KMS quota increases are not available** as of today.
+
+### S3 Performance Optimizations
+
+- **Multi-Part Upload**:
+    - Splits data into **smaller chunks** and uploads them in **parallel**.
+    - Recommended for files **>100MB**, mandatory for files **>5GB**.
+- **S3 Transfer Acceleration**:
+    - Speeds up uploads using AWS **edge locations**.
+    - **Compatible with Multi-Part Upload**.
+- **S3 Byte-Range Fetches**:
+    - Speeds up downloads by **parallelizing GET requests**.
+    - Can retrieve **only a part** of the file.
+
+## S3 Select and Glacier Select
+
+- Enables **retrieving less data** by using **SQL queries** for server-side filtering.
+- Filters by **rows and columns**.
+- SQL queries must be **simple** (no joins).
+- **Reduces network traffic**.
+
+## AWS Athena
+
+- **Serverless query service** for analyzing data stored in S3.
+- Uses **SQL** for queries.
+- Provides a **JDBC/ODBC driver**.
+- **Pricing**:
+    - Charged per **query** based on **amount of data scanned**.
+    - **Billed only for usage**.
+- **Supported file formats**:
+    - CSV, JSON, ORC, Avro, Parquet.
+    - Uses **Presto query engine**.
+- **Use cases**:
+    - Business intelligence, analytics, reporting, log analysis, etc.
+
+## S3 Object Lock and Glacier Vault Lock
+
+- **S3 Object Lock**:
+    - Implements **WORM (Write Once, Read Many)**.
+    - Prevents deletion/modification of files **until the lock expires**.
+- **Glacier Vault Lock**:
+    - Implements **WORM** for **Glacier vaults**.
+    - Locked files **cannot be changed** while the lock is active.
+- **Useful for compliance and data retention**.
