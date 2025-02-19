@@ -42,3 +42,15 @@
     - **Cacheable content** (e.g., images, videos).
     - **Dynamic content** (e.g., API acceleration, dynamic site delivery).
 - **Content is served directly from Edge Locations**.
+
+### **Global Accelerator**
+
+- **Improves performance** for a wide range of applications over TCP or UDP**.
+- **Traffic is proxied from Edge Locations** to the application backend.
+- **Best suited for non-HTTP applications**, such as:
+    - **Gaming (UDP)**.
+    - **IoT (MQTT)**.
+    - **Voice over IP (VoIP)**.
+- **Can also be used for HTTP applications** when:
+    - **Static IP addresses** are required.
+    - **Fast regional failover** is essential.
