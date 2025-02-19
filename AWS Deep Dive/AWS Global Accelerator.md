@@ -1,0 +1,21 @@
+# AWS Global Accelerator
+
+## Unicast IP vs Anycast IP
+
+- **Unicast IP**: A single server holds one IP address.
+- **Anycast IP**: Multiple servers share the same IP address, and the client is routed to the nearest one.
+
+## AWS Global Accelerator 
+
+- It leverages the **AWS internal network** to route traffic to applications.
+- **Two Anycast IPs** are created for the application, which are **global**. Traffic from these IPs is sent to **Edge Locations**, which then forward it to the application using the **AWS global network**.
+- **Global Accelerator works with**:
+    - Elastic IP
+    - EC2 instances
+    - ALB (Application Load Balancer)
+    - NLB (Network Load Balancer)  
+    These can be either **public** or **private**.
+- **Provides consistent performance by**:
+    - **Intelligent routing** to the lowest latency endpoint and **fast regional failover**.
+    - **Bypassing client-side caching**, as the **IP address remains static**.
+    - Keeping traffic **internal to the AWS network**.
