@@ -51,3 +51,15 @@
     - Max size is /16 = 65K IP addresses
 - VPC is private => only the private address ranges are allowed
 - **A newly created VPC CIDR should not overlap with an existing one used another VPC**
+
+## VPC Subnets
+
+- Subnets are tied to specific AZs
+- AWS reservers 5 IP addresses (first 4 and the last 1 address) in each subnet
+- These 5 IP addresses are not available and can not be assigned to an instance
+- Example, in case of a CIDR block 10.0.0.0/24 the reserver IPs are the following:
+    - 10.0.0.0 - Network address
+    - 10.0.0.1 - Reserved by AWS for the VPC router
+    - 10.0.0.2 - Reserved by AWS for mapping to an Amazon provided DNS
+    - 10.0.0.3 - Reserved for future use
+    - 10.0.0.255 - Network broadcast address. AWS does not supports broadcast in a VPC, therefore the address is reserved
