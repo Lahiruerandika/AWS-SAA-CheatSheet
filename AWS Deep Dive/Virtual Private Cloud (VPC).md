@@ -179,3 +179,117 @@
 - Action: success or failure of the request due to SG/NACL
 - Flow logs can be used for analytics on usage patterns or malicious behavior
 - We can query VPC flow logs using Athena on S3 or CloudWatch Logs Insights
+
+## Bastion Hosts
+
+- Bastion hosts are used to SSH into instances from private subnets
+- The bastion host is sitting in the public subnet which is connected to the private subnets
+- Bastion host SG must be really strict
+- We have to make sure the bastion host only has port 22 traffic from the IP we need, not from the security group of other instances
+
+## Site to Site VPN
+
+- Virtual Private Gateway:
+    - VPN concentrator on the AWS side of the VPN connection
+    - Virtual Private Gateway (VPG) is created and attached to the VPC from which we want to create the site-to-site VPN connection
+    - Possibility to customize the ASN
+- Customer Gateway:
+    - Software application or physical device on customer side of the VPN connection
+    - IP Address: use static, internet-routable IP address for the customer device. If it is behind a NAT (with NAT-T enabled), use the public IP address of the NAT
+
+## Direct Connect (DX)
+
+- Direct Connect provides a dedicated private connection from a remote network to the AWS VPC
+- Dedicated connection must be setup between the client's DC and AWS Direct Connect locations
+- In AWS we still need to setup a Virtual Private Gateway in the VPC
+- DX will allow access to public resources (S3) and private (EC2) on the same connection
+- Use cases:
+    - Increase bandwidth throughput
+    - More consistent network experience - application using real-time data feeds
+    - Hybrid Environment
+- DX supports both IPv4 and IPv6
+- Direct Connect Gateway: if we want to setup a Direct Connect to one or more VPC in many different regions (but in the same account), we must use a Direct Connect Gateway
+- Direct Connect Gateway does not replace VPC Peering
+- Direct Connect has two connections types:
+    - Dedicated Connections: 1 Gbps and 10 Gbps capacity
+        - Physical ethernet port dedicated to a customer
+        - In order to get this a request has to be made to AWS first, then completed by AWS Direct Connect Partners
+    - Hosted Connections: 50 Mbps, 500 Mbps, up to 10 GBps
+        - Connection requests are made via AWS Direct Connect Partners
+        - Capacity can be added or removed on demand
+- Lead times are often longer than 1 month
+
+### Direct Connect Encryption
+
+- Data in transit is not encrypted but is private
+- In case there is need for encryption we can combine DX with VPN which provides IPsec-encrypted private connection
+
+## Egress Only Internet Gateway
+
+- Egress only Internet Gateway works only for IPv6 
+- Similar function as a NAT, but for IPv6 (NAT is for IPv4)
+- All IPv6 addresses are public addresses, therefore all our instances are publicly accessible
+- Egress Only Internet Gateway gives our IPv6 instances access to the internet, but they wont be directly reachable by the internet
+- After creating an Egress Only Internet Gateway we have to edit the route tables
+
+## Exposing Services in a VPC to Other VPC
+
+- Option 1: make it public
+    - Goes through the public internet
+    - Tough to manage access
+- Option 2: VPC peering
+    - Must create many peering relations
+    - Opens the whole internal network to the other network
+- Option 3: AWS Private Link (VPC Endpoint Services)
+    - Most secure and scalable way to expose a service to multiple other VPCs
+    - The solution does not require VPC peering, IGW, NAT, route tables
+    - Requires a network load balancer in the service VPC and an ENI in the customer VPC
+
+## EC2-Classic and AWS ClassicLink (deprecated)
+
+- EC2-Classic: instances are running in a single network shared with other customers
+- Amazon VPC: instances are running logically isolated in an AWS account
+- ClassicLink allows to link EC2-Classic instances to a VPC inside an account. In order to have a link between a VPC and an EC2-Classic instance we have to:
+    - Create a ClassicLink and associate a security group to it which will enable private communication
+    - ClassicLink removes the necessity to have IPv4 public addresses for this type of communication
+
+## AWS VPN CloudHub
+
+- Provides secure communication between multiple customer networks in case we have multiple VPN connections
+- Low cost hub-and-spoke model for primary or secondary network connectivity between locations
+
+## Transit Gateway
+
+- It is a star connection between all the VPCs and the on-premises infrastructure
+- It is for having transitive peering between thousands of VPCs and on-premises and hub-and-spoke connections
+- Transit Gateway is a regional resource, but it can work cross-region
+- It supports cross-account sharing using Resource Access Manager (RAM)
+- We can peer Transit Gateways across regions
+- Route tables can limit which VPC can talk with what other VPC
+- Works with Direct Connect Gateway, VPN connections
+- Supports **IP Multicast** (not supported by any other AWS services)
+
+## VPC Summary
+
+- CIDR: IP Range
+- VPC: Virtual Private Cloud => we define a list of IPv4 and IPv6 CIDRs
+- Subnets: tied to an AZ, we define it by CIDRs
+- Internet Gateway: at the VPC level, provides IPv4 and IPv6 internet access
+- Route tables: must be edited to add routes from subnets to the IGW, VPC peering connections, VPC Endpoints, etc.
+- NAT Instance: gives internet access to instances in a private subnets. Deprecated, must be setup in a public subnet, Source/Destination flag should be disabled
+- NAT Gateway: managed by AWS, provides scalable internet access to private instances, only for IPv4
+- Private DNS + Route 53: enables DND Resolution + DNS hostname inside a VPC
+- NACL: Stateless, subnet level routes, used for filter inbound and outbound traffic
+- Security Groups: Stateful, operate at the instance level
+- VPC Peering: connect to VPC with non overlapping CIDRs, non transitive
+- VPC Endpoints: provide private access to AWS Services
+- VPC FLow Logs: can be configured at VPC/Subnet/ENI level, used for monitoring traffic
+- Bastion Hosts: public instances to SSH into, used for connecting to other private instances via SSH
+- Site to Site VPN: used for setup a Customer Gateway on DC, a Virtual Private Gateway on VPC and site-to-site VPN over public internet
+- Direct Connect: used for setup a VIrtual Private Gateway on VPC and establish a direct private connection to an AWS Direct Connect Location
+- Direct Connect Gateway: setup Direct Connect to many VPCs in different regions
+- Internet Gateway Egress: similar to NAT, but for IPv6
+- Private Link (VPC Endpoint Services): connect services from one VPC to another
+- ClassicLink: connect EC2-Classic instances to VPCs
+- VPN CloudHub: hub-and-spoke VPN model to connect sites
+- Transit Gateway: transitive peering connection for VPC, VPN and DX
