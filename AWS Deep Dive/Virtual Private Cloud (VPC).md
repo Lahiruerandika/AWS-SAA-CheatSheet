@@ -63,3 +63,39 @@
     - 10.0.0.2 - Reserved by AWS for mapping to an Amazon provided DNS
     - 10.0.0.3 - Reserved for future use
     - 10.0.0.255 - Network broadcast address. AWS does not supports broadcast in a VPC, therefore the address is reserved
+
+## IGW - Internet Gateways
+
+- Internet gateways helps a VPC instance to connect to the internet
+- It scales horizontally and is HA and redundant
+- Must be created separately from a VPC
+- One VPC can have only one attached internet gateway, one internet gateway can have only one VPC
+- Internet Gateway is also a NAT for the instances that have a public IPv4
+- Internet Gateways on their one do not allow internet access, route tables also must be configured
+
+## NAT Instances - Network Address Translation (outdated)
+
+- Allow instances in private subnets to connect to the internet
+- NAT instances must be launched in a public subnet to have internet access
+- *Source/Destination Check* flag for EC2 must be disabled
+- NAT instanced should have an Elastic IP attached to them
+- Route tables must be configured to route traffic from the private subnet to the NAT instance
+- In order to set up we must use a pre-configured Amazon Linux AMI
+- It is not HA/resilient out of the box => We would need to set up an ASG in multi AZ + resilient user data script
+- Internet traffic bandwidth depends on the EC2 instance performance
+
+## NAT Gateway
+
+- AWS managed NAT, higher bandwidth, better availability, no administration
+- It is pay by hour for usage and bandwidth
+- NAT is created in a specific AZ and it uses an Elastic IP
+- It can not be used by an instance from the same subnet as the NAT
+- Required an IGW
+- 5Gbps of bandwidth with automatic scaling up to 45Gbps
+- There is no security group to manage
+- NAT Gateway is resilient within a single AZ
+- We must create multiple NAT Gateways in multiple AZs for fault-tolerance
+
+## Comparison between NAT Instance and NAT Gateway
+
+- AWS comparison: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html
