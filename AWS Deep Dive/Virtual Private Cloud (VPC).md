@@ -136,3 +136,12 @@
 | It is associated to an instance inside of a VPC          | Automatically applies to all instances in the subnet                    |
 
 - Example of NACL with ephemeral ports: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html
+
+## VPC Peering
+
+- VPC Peering allows to connect two VPCs privately using AWS network. This will make them behave as if they were the same network
+- Networks must have non-overlapping CIDRs
+- VPC Peering connections is not transitive, which means it must be established for each VPC that needs to communicate with other
+- VPC Peering can be done form one AWS account to another
+- We must update the route tables in each VPC subnet to ensure instances can communicate with each other
+- VPC peering can work inter-region, cross-account. We can reference a security group of a peered VPC (this works cross account also)
