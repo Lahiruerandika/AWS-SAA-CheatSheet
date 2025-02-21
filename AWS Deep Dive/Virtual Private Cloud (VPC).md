@@ -27,3 +27,27 @@
     - /8 - last three IP numbers can change
     - /0 - all the IP numbers can change
 - To calculate CIDR, use: https://www.ipaddressguide.com/cidr
+
+## Private vs Public IP Addresses (IPv4)
+
+- Private IP can only allow certain values:
+    - 10.0.0.0 - 10.255.255.255 (10.0.0.0/8) - used for big networks
+    - 172.16.0.0 - 172.31.255.255 (172.16.0.0/12) - default AWS private VPC
+    - 192.168.0.0 - 192.168.255.255 (192.168.0.0/16) - home networks
+- All the rest of the IP addresses are considered public
+
+## Default VPC
+
+- All new accounts have a default VPC
+- New instances are launched into default VPC if no subnet is specified
+- Default VPCs have internet connectivity and all instances have public IP address
+- We also get a public and a private DNS name
+
+## VPC - Virtual Private Cloud
+
+- We can have multiple VPCs in a region (max 5 per region - soft limit)
+- Max CIDR per VPC is 5, for each CIDR:
+    - Min size is /28 = 16 IP addresses
+    - Max size is /16 = 65K IP addresses
+- VPC is private => only the private address ranges are allowed
+- **A newly created VPC CIDR should not overlap with an existing one used another VPC**
