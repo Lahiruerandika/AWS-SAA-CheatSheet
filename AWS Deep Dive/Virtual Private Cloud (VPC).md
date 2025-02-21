@@ -157,3 +157,25 @@
 - In case of issues:
     - We have to check DNS settings resolution in the VPC
     - We have to check the route tables
+
+## VPC FLow Logs
+
+- Flow logs help capture information about the IP traffic going into the interfaces
+- There are 2 kinds of Flow Logs:
+    - VPC Flow Logs
+    - Subnet Flow Logs
+    - Elastic Network Interface Flow Logs
+- Flow logs help monitor and troubleshoot connectivity issues
+- Flow logs data can go to S3/CloudWatch logs
+- It can capture network information from some of the AWS managed interface too: ELB, RDS, ElastiCache, Redshift, AWS Workspaces
+
+### Flow Log Syntax
+
+```
+<version> <account-id> <interface-id> <srcaddr> <dstaddr> <srcport> <dstport> <protocol> <packets> <bytes> <start> <end> <action> <log-status>
+```
+- Srcaddr, dstaddr help identify problematic IP addresses
+- Scrport, dstport help identify problematic ports
+- Action: success or failure of the request due to SG/NACL
+- Flow logs can be used for analytics on usage patterns or malicious behavior
+- We can query VPC flow logs using Athena on S3 or CloudWatch Logs Insights
