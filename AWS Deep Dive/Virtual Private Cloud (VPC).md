@@ -99,3 +99,40 @@
 ## Comparison between NAT Instance and NAT Gateway
 
 - AWS comparison: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html
+
+## DNS Resolution in VPC
+
+-DNS Resolutions settings:
+    - **enableDnsSupport**:
+        - By default is set to true
+        - Helps decide if DNS resolution is supported for the VPC
+        - If true, queries the AWS DNS server at 169.254.169.253
+    - **enableDNSHostName**:
+        - By default is set to false for an user created VPC, true for the Default VPC
+        - Won't do anything unless enableDnsSupport=true
+        - If true, the VPC assigns public host names to EC2 instances
+- If we use custom DNS domain names in a private zone in Route53, we must set both of these attributes to true
+
+## Network Access Control Lists (NACL) and Security Groups (SG)
+
+- NACL is a like a firewall which controls traffic which goes outside of comes inside a subnet
+- The default NACL allows everything outbound and everything inbound
+- We define one NACL per subnet, new subnets are assigned the default NACL
+- We can define NACL rules:
+    - Rules have a number (1 - 32766) which defines the precedence
+    - Rules with lower number have higher precedence
+    - Rule with higher precedence wins at the time of evaluation
+    - Last rule is has the precedence of asterisk (*) and denies all the requests. This rule is not editable
+    - AWS recommends adding rules by increment of 100
+- Newly created created NACL will deny everything (last rule)
+- NACLs are great way of blocking a specific IP address at the subnet level
+
+| Security Group                                           |  Network ACL                                                            |
+|----------------------------------------------------------|-------------------------------------------------------------------------|
+| Operates at the instance level                           | Operates at the subnet level                                            |
+| Supports allow rules only                                | Supports allow rules and deny rules                                     |
+| It is stateful: return traffic is automatically allowed  | It is stateless: return traffic must be explicitly allowed by the rules |
+| All rules are evaluated before deciding to allow traffic | Rules have a precedence when deciding whether to allow or deny traffic  |
+| It is associated to an instance inside of a VPC          | Automatically applies to all instances in the subnet                    |
+
+- Example of NACL with ephemeral ports: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html
