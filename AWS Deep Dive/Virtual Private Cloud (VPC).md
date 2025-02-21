@@ -145,3 +145,15 @@
 - VPC Peering can be done form one AWS account to another
 - We must update the route tables in each VPC subnet to ensure instances can communicate with each other
 - VPC peering can work inter-region, cross-account. We can reference a security group of a peered VPC (this works cross account also)
+
+## VPC Endpoints
+
+- Allow connection to AWS services from VPCs using a private network instead of the public internet
+- They scale horizontally
+- They remove the need of IGW, NAT, etc. to access AWS services
+- There are 2 kinds of VPC Endpoints:
+    - **Interface**: provisions an ENI (private IP address) as an entry point. A security group must be attached to it. Most AWS services use this method
+    - **Gateway**: provisions a target and must be used in a route table. Gateway is used for S3 and DynamoDB
+- In case of issues:
+    - We have to check DNS settings resolution in the VPC
+    - We have to check the route tables
