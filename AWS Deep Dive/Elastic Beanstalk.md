@@ -17,7 +17,6 @@
     - Application
     - Application version: each deployment gets a version
     - Environments
-    
 - We deploy application versions to environments and can promote application versions to the next environment
 - We can rollback to previous versions of the application
 - We have full control over the lifecycle of the application
