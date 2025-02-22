@@ -5,3 +5,32 @@
 - It uses all the previous components: EC2, ASG, ELB, RDS, etc.
 - These components can be configured and instantiated via configuration files
 - Beanstalk is entirely free, we only pay for the underlying infrastructure
+- Beanstalk is managed service, which means:
+    - Instance configuration, OS  is handled by AWS
+    - Deployment strategies are configurable but they are performed by Beanstalk
+- The application code is the developer's responsibility (obviously)
+- There are 3 architecture models for Beanstalk:
+    - Single Instance deployments, recommended for development
+    - LB + ASG: great for production or pre-production
+    - ASG only: great for non wen applications
+- Beanstalk has 3 components:
+    - Application
+    - Application version: each deployment gets a version
+    - Environments
+    
+- We deploy application versions to environments and can promote application versions to the next environment
+- We can rollback to previous versions of the application
+- We have full control over the lifecycle of the application
+- Beanstalk has support for many applications:
+    - Go
+    - Java SE
+    - Java with Tomcat
+    - .Net on Windows Server with IIS
+    - Node.js
+    - PHP
+    - Python
+    - Ruby
+    - Packer
+    - Single Container Docker
+    - Multi-container Docker
+    - Pre-configured Docker
