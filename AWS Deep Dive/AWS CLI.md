@@ -17,3 +17,16 @@
     ```
 - This command creates 2 files in `/.aws/config` folder: `config` and `credentials`
 - A configuration can be invalidated by deleting the access keys or it can be inactivated
+
+## AWS CLI on EC2
+
+### BAD WAY - Don't do this
+
+- **Never ever put personal credentials on an EC2 instance!**
+- This means, never put secrets in when running `aws configure` command. Use this for setting some defaults, like region and output format
+
+### THE RIGHT WAY
+
+- IAM Roles can be attached to EC2 instances
+- IAM Roles can come with a policy authorizing exactly what the EC2 instance should be able to do
+- This is the best practice on AWS and should be done every time!
