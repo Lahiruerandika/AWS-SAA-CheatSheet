@@ -45,3 +45,18 @@
       - Data is replicated within same AZ
       - Replace failed files within minutes
       - Usage: long-term processing, sensitive data
+
+  ## Amazon FSx for NetApp ONTAP
+  - Managed NetApp ONTAP on AWS
+  - File System compatible with NFS, SMB, iSCSI protocol
+  - Move workloads running on ONTAP or NAS to AWS
+  - Works with: 
+    - Linux
+    - Windows
+    - MacOS
+    - VMware Cloud on AWS
+    - Amazon Workspaces & AppStream 2.0
+    - Amazon EC2, ECS and EKS
+  - Storage shrinks or grows automatically
+  - Snapshots,replication,low-cost,compressionanddata
+  - Point-in-time instantaneous cloning (helpful for testing new workloads)
