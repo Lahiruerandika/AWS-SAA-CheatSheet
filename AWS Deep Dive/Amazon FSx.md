@@ -19,3 +19,29 @@
   - Can be accessed from your on-premises infrastructure (VPN or Direct Connect) 
   - Can be configured to be Multi-AZ (high availability)
   - Data is backed-up daily to S3
+
+  ## Amazon FSx for Lustre
+  - Lustre is a type of parallel distributed file system, for large-scale computing
+  - The name Lustre is derived from “Linux” and “cluster
+  - Machine Learning, High Performance Computing (HPC)
+  - Video Processing, Financial Modeling, Electronic Design Automation 
+  - Scales up to 100s GB/s, millions of IOPS, sub-ms latencies
+  - Storage Options:
+    - SSD – low-latency, IOPS intensive workloads, small & random file operations 
+    - HDD – throughput-intensive workloads, large & sequential file operations
+  - Seamless integration with S3
+    - Can “read S3” as a file system (through FSx)
+    - Can write the output of the computations back to S3 (through FSx)
+  - Can be used from on-premises servers (VPN or Direct Connect)
+
+  - FSx Lustre - File System Deployment Options
+    - Scratch File System
+      - Temporary storage
+      - Data is not replicated (doesn’t persist if file server fails)
+      - High burst (6x faster, 200MBps per TiB)
+      - Usage: short-term processing, optimize costs 
+    - Persistent File System
+      - Long-term storage
+      - Data is replicated within same AZ
+      - Replace failed files within minutes
+      - Usage: long-term processing, sensitive data
