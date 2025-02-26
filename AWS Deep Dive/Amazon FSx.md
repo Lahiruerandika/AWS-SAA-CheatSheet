@@ -60,3 +60,18 @@
   - Storage shrinks or grows automatically
   - Snapshots,replication,low-cost,compressionanddata
   - Point-in-time instantaneous cloning (helpful for testing new workloads)
+
+  ## Amazon FSx for OpenZFS
+  - Managed OpenZFS file system on AWS
+  - File System compatible with NFS (v3, v4, v4.1, v4.2)
+  - Move workloads running on ZFS to AWS
+  - Works with: 
+    - Linux
+    - Windows
+    - MacOS
+    - VMwareCloudonAWS
+    - AmazonWorkspaces&AppStream2.0 
+    - AmazonEC2,ECSandEKS
+  - Up to 1,000,000 IOPS with < 0.5ms latency
+  - Snapshots, compression and low-cost
+  - Point-in-time instantaneous cloning (helpful for testing new workloads)
