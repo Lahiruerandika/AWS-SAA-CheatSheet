@@ -8,3 +8,31 @@
     - **Kinesis Streams**: low latency streaming ingest at scale
     - **Kinesis Analytics**: perform real-time analytics on streams using SQL
     - **Kinesis Firehose**: load streams into S3, Redshift, ElasticSearch
+
+## Kinesis Streams Overview
+
+- Streams are divided in ordered Shards/Partitions
+- For higher throughput we can increase the size of the shards
+- Data retention is 1 day by default, can go up to 365 days
+- Kinesis Streams provides the ability to reprocess/replay the data
+- Multiple applications can consume the same stream, this enables real-time processing with scale of throughput
+- Kinesis is not a database, once the data is inserted, it can not be deleted
+
+### Kinesis Stream Shards
+
+- One stream is made of many different shards
+- 1MB/s or 1000 messages at write PER SHARD
+- 2MB/s read PER SHARD
+- Billing is done per shard provisioned, we can have as many shards as we want as long as we accept the cost
+- Ability to batch the messages per calls
+- The number of shards can evolve over time (reshard/merge)
+- **Records are ordered per shard!**
+
+### Kinesis Streams API - Put Records
+
+- Data must be sent form the PutRecords API to a partition key
+- Data with the same key goes to the same partition (helps with ordering for a specific key)
+- Messages sent get a sequence number
+- Partition key must be highly distributed in order to avoid hot partitions
+- In order to reduce costs, we can use batching with PutRecords API
+- It the limits are reached, we get a *ProvisionedThroughputException*
