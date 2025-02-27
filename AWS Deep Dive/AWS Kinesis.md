@@ -60,3 +60,11 @@
 - Encryption at rest using KMS
 - Possibility to encrypt/decrypt data client side
 - VPC Endpoints available for Kinesis to be access within VPCs
+
+## Kinesis Data Firehose
+
+- Fully managed service, no administration required, provides automatic scaling, it is basically serverless
+- Used for load data into Redshift, S3, ElasticSearch and Splunk
+- It is **Near Real Time**: 60 seconds latency minimum for non full batches or minimum 32 MB of data at a time
+- Supports many data formats, conversions, transformation and compression
+- Pay for the amount of data going through Firehose
