@@ -68,3 +68,18 @@
 - It is **Near Real Time**: 60 seconds latency minimum for non full batches or minimum 32 MB of data at a time
 - Supports many data formats, conversions, transformation and compression
 - Pay for the amount of data going through Firehose
+
+### Kinesis Data Streams vs Firehose
+
+- Streams:
+    - Requires to write custom code (producer/consumer)
+    - Real time (~200 ms)
+    - Must manage scaling (shard splitting / merging)
+    - Can store data into stream, data can be stored from 1 to 7 days
+    - Data can be read by multiple consumers
+- Firehose:
+    - Fully managed, sends data to S3, Redshift, Splunk, ElasticSearch
+    - Serverless, data transformation can be done with Lambda
+    - Near real time
+    - Scales automatically
+    - It provides no data storage
