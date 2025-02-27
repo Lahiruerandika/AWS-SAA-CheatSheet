@@ -36,3 +36,19 @@
 - Partition key must be highly distributed in order to avoid hot partitions
 - In order to reduce costs, we can use batching with PutRecords API
 - It the limits are reached, we get a *ProvisionedThroughputException*
+
+### Exceptions
+
+- ProvisionedThroughputException Exceptions:
+    - Happens when the data value exceeds the limit exposed by the shard
+    - In order to avoid the, we have to make sure we don't have hot partitions
+    - Solutions:
+        - Retry with back-off
+        - Increase shards (scaling)
+        - Ensure the partition key is good
+
+### Consumers
+
+- Consumers can use CLI or SDK, or the Kinesis Client Library (in Java, Node, Python, Ruby, .Net)
+- Kinesis Client Library (KCL) uses DynamoDB to checkpoint offsets
+- KCL uses DynamoDB to track other workers and share work amongst shards
