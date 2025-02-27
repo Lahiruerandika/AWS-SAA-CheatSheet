@@ -52,3 +52,11 @@
 - Consumers can use CLI or SDK, or the Kinesis Client Library (in Java, Node, Python, Ruby, .Net)
 - Kinesis Client Library (KCL) uses DynamoDB to checkpoint offsets
 - KCL uses DynamoDB to track other workers and share work amongst shards
+
+### Security
+
+- Control access / authorization using IAM policies
+- Encryption in flight using HTTPS endpoints
+- Encryption at rest using KMS
+- Possibility to encrypt/decrypt data client side
+- VPC Endpoints available for Kinesis to be access within VPCs
