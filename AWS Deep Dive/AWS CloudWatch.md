@@ -25,3 +25,37 @@
 - Metrics resolution by default is 1 minute, but we can have higher resolutions up to 1 second for a higher cost
 - We can send metrics by using the **PutMetricsData** API call
 - In case of errors we should use exponential back-off
+
+## CloudWatch Dashboards
+
+- Great way to setup dashboards for quick access to key metrics
+- Dashboards are global
+- Dashboards can include graphs from different regions
+- We can change the time zone and time rage for each dashboard
+- We can set up automatic refresh (10s, 1m, 2m, 5m, 15m)
+- Pricing:
+    - 3 dashboards (up to 50 metrics) for free
+    - $3/dashboard/month
+
+## CloudWatch Logs
+
+- Applications can send logs to CloudWatch using the SDK
+- Also, CloudWatch can collects logs from:
+    - Elastic Beanstalk: collection of logs from applications
+    - ECS: collections of logs from containers
+    - AWS Lambda: collection from functions
+    - VPL Flow Logs
+    - API Gateway
+    - CloudTrail based on filter
+    - CloudWatch log agents: from EC2 machines
+    - Route53: logs for DNS queries
+- CloudWatch logs can be saved to:
+    - Batch exporting to S3 for archival
+    - Stream logs to ElasticSearch cluster for further analytics
+- Log storage architecture:
+    - Log groups: arbitrary name, usually representing the name of an application
+    - Log stream: instances within application/log files/containers
+- We can define a log expiration policy: never expire, 30 days, etc.
+- Using the AWS CLI we can tail logs
+- To send logs to CloudWatch, we have to make sure the IAM permissions are correct
+- Logs can be encrypted at group level using KMS
