@@ -52,3 +52,14 @@
 - SQS Access Policies:
     - Useful for cross-account access to SQS queues
     - Useful for allowing other services (SNS, S3) to write to an SQS queue
+
+## Message Visibility Timeout
+
+- After a message is polled by a consumer, it becomes invisible to other consumers
+- Default message visibility timeout is 30 seconds, which means the consumer has 30 seconds to process the message
+- After the message visibility timeout is over, the message becomes visible to other consumers
+- If the processing is not finished during the visibility timeout, there is a chance the message will be processed twice
+- If a consumer knows that the processing wont finish in time, it can use the **ChangeVisibility** API to request more time
+- If the message visibility timeout is high and the processing fails, it may take a long time for the message to be processed again
+- If the visibility timeout it too short, we may end up processing the same message twice
+- Best practice: the visibility timeout should be set to something appropriate. The consumer must be implemented in a way to use the ChangeVisibility API
