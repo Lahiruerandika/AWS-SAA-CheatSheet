@@ -63,3 +63,11 @@
 - If the message visibility timeout is high and the processing fails, it may take a long time for the message to be processed again
 - If the visibility timeout it too short, we may end up processing the same message twice
 - Best practice: the visibility timeout should be set to something appropriate. The consumer must be implemented in a way to use the ChangeVisibility API
+
+## Dead Letter Queues
+
+- If a consumer fails to process a message within the visibility timeout, the messages goes back to the queue. This can happen multiple times.
+- We can set a **MaximumReceives** threshold, which denotes how many time a message should be able to go back to the queue
+- If the MaximumReceives threshold is exceeded, the message is sent to a dead letter queue
+- DLQs are useful for debugging
+- We have to make sure the messages are processed in DLQ before expiring. It is not a good idea to set a short expiration time for the DLQ
