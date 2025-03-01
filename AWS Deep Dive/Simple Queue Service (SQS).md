@@ -41,3 +41,14 @@
     - We can scale the number of the consumers based on the throughput of processing
 - SQS with Auto Scaling Group:
     - We can scale based on the **ApproximateNumberOfMessages** metric by creating a CloudWatch alarm
+
+## SQS Security
+
+- Encryption:
+    - In-flight encryption using HTTPS
+    - At-rest encryption using KMS
+    - Client-side encryption if the client wants to perform encryption/decryption itself
+- Access Control: IAM policies to regulate access to the SQS API
+- SQS Access Policies:
+    - Useful for cross-account access to SQS queues
+    - Useful for allowing other services (SNS, S3) to write to an SQS queue
