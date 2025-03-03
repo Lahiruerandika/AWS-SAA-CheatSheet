@@ -9,3 +9,9 @@
     - Find out how did an ALB configuration change over time
 - We can receive alerts (SNS notifications) for any change
 - AWS Config is a per region service, but it can be aggregated across regions and accounts
+
+## AWS Config Resource
+
+- Ability to view the compliance of a resource over time
+- Ability to view configuration of a resource over time
+- View CloudTrails API calls if enabled
