@@ -33,8 +33,3 @@
 - It is truck which can transfer exabytes of data
 - Each Snowmobile has 100PT of data storage capacity
 - Better than Snowball if more than 10PB of data should be transferred
-
-## Snowball into Glacier
-
-- Snowball can not import data directly to Glacier
-- We have to use Amazon S3 first, adn an S3 lifecycle policy
