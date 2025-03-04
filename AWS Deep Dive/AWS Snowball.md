@@ -7,3 +7,12 @@
 - Uses pay for data transfer jobs
 - Use cases: large data cloud migrations, DC decommissions, disaster recovery
 - If it takes more than a week to transfer over the network the data, it probably would be recommended to use a Snowball device
+
+## Snowball Process
+
+1. Request a snowball device from AWS console for delivery
+2. Install the snowball client on the local server
+3. Connect the snowball device to the server and copy the files over using the client
+4. Shipt back the device when the all the necessary data is transferred to the device
+5. The data from the Snowball will be loaded into an S3 bucket
+6. Snowball is completely wiped
