@@ -16,3 +16,14 @@
 4. Shipt back the device when the all the necessary data is transferred to the device
 5. The data from the Snowball will be loaded into an S3 bucket
 6. Snowball is completely wiped
+
+## Snowball Edge
+
+- Snowball Edge adds computational capability to the device
+- It can have 100TB of capacity with either:
+    - 24 vCPU (Storage optimized)
+    - 52 vCPU & optional GPU (Compute optimized)
+- Supports a custom EC2 AMI so it can perform processing on the go
+- Supports custom Lambda functions
+- It is useful for pre-processing data while it is moving
+- Use cases: data migration, image collation, IoT capture, machine learning
