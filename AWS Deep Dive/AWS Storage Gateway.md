@@ -23,3 +23,11 @@
 - Each buckets will have its own IAM roles in order to be accessed by the file gateway
 - Most recently used data is cached in the file gateway
 - File Gateway can be mounted on many servers (because of the NFS protocol)
+
+### Volume Gateway
+
+- Block storage using iSCSI protocol backed by S3
+- EBS snapshots are created time to time which are stored in S3, these will help use to restore un-premise volumes
+- Cached volumes: low latency access to the most recently used data
+- Stored volumes: entire dataset is on premise, scheduled buckets are stored in S3
+- Volumes are usually mounter using iSCSI protocol, for on-premise it will look like a local volume
