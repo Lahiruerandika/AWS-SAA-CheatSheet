@@ -31,3 +31,10 @@
 - Cached volumes: low latency access to the most recently used data
 - Stored volumes: entire dataset is on premise, scheduled buckets are stored in S3
 - Volumes are usually mounter using iSCSI protocol, for on-premise it will look like a local volume
+
+### Tape Gateway
+
+- Some companies have backup processes using physical tapes
+- With tape gateway these companies can use the same process, but the data will backed into the cloud
+- Virtual Tape Library (VTL) backed by Amazon S3 and Glacier
+- Backup processes using iSCSI interface will work as well with tape gateway
