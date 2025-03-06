@@ -32,9 +32,14 @@
 - Stored volumes: entire dataset is on premise, scheduled buckets are stored in S3
 - Volumes are usually mounter using iSCSI protocol, for on-premise it will look like a local volume
 
-### Tape Gateway
+### File Gateway - Hardware Appliance
 
-- Some companies have backup processes using physical tapes
-- With tape gateway these companies can use the same process, but the data will backed into the cloud
-- Virtual Tape Library (VTL) backed by Amazon S3 and Glacier
-- Backup processes using iSCSI interface will work as well with tape gateway
+- Using file gateway means we need virtualization, otherwise we can use a **File Gateway Hardware Appliance**
+- It is an actual hardware which can be bought from amazon.com
+- Helpful for daily NFS backup in small data centers
+
+## Storage Gateway Summary
+
+- File access / NFS => File Gateway (backed by S3)
+- Volumes / Block Storage / iSCSI => Volume Gateway (backed by S3 with EBS snapshots)
+- VTL Tape solution / Backup with iSCSI => Tape Gateway (backed by S3 and Glacier)
