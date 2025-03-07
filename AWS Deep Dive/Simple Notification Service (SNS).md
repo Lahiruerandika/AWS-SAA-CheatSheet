@@ -1,0 +1,29 @@
+# SNS - Simple Notification Service
+
+- Pub/Sub model
+- The event produces only sends messages to one SNS topic
+- Each subscriber to the topic will get all the messages be default (we can filter them, if we want)
+- We can have up to 10 million subscribers per topic
+- We cave up to 100K topics
+- Subscribers to the topic can be:
+    - SQS
+    - HTTP/HTTPS
+    - Lambda
+    - Emails
+    - SMS messages
+    - Mobile Notifications
+- Many different services integrate with SNS for notifications, for example:
+    - CloudWatch (for alarms)
+    - Auto Scaling Groups notifications
+    - S3 (bucket events)
+    - CloudFormation (state changes)
+    - Etc...
+- How to publish?
+    - In order to publish we must create a topic using the SDK
+    - We may create one or many subscriptions
+    - We publish data to the topic
+- Direct Publish (for mobile apps SDK)
+    - Create a platform application
+    - Create a platform endpoint
+    - Publish to the platform endpoint
+- Direct Publish works with Google GCM, Apple APNS, Amazon ADM
