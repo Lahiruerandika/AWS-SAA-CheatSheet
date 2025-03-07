@@ -27,3 +27,14 @@
     - Create a platform endpoint
     - Publish to the platform endpoint
 - Direct Publish works with Google GCM, Apple APNS, Amazon ADM
+
+## Security
+
+- Encryption:
+    - In-flight encryption using HTTPS API
+    - At-rest encryption using the KMS keys
+    - Client-side encryption if the client wants to perform encryption/decryption itself
+- Access Controls: IAM policies to regulate access to the SNS API
+- SNS Access Policies (similar to S3 bucket policies):
+    - Useful for cross-account access to SNS topics
+    - Useful for allowing other services (S3) to write to an SNS topic
