@@ -38,3 +38,16 @@
 - SNS Access Policies (similar to S3 bucket policies):
     - Useful for cross-account access to SNS topics
     - Useful for allowing other services (S3) to write to an SNS topic
+
+## SNS + SQS Fan Out
+
+- Send a message to multiple SQS queues using SNS
+- Push one in SNS, receive in all SQS queues which are subscribers
+- Fully decouples, no data loss
+- SQS allows for data persistance, delayed processing and retries of work
+- Ability to add more SQS subscribers over time
+- SQS queues must have an allow access policy for SNS to be able to write to the queues
+- **SNS cannot send messages to SQS FIFO queues (AWS limitation)!**
+- Use case: send S3 events to multiple queues:
+    - For the same combination of even type and prefix we can only have one S3 Event rule
+    - In case we want to send the same S3 event to many SQS queues, we must use SNS fan-out
