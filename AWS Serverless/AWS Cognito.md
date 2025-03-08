@@ -20,3 +20,14 @@
 - Can enable Federated Identities (Facebook, Google, SAML, etc.). **This is not the same CIP (AWS Federated Identity)!**
 - Sends back a JSON Web Token (JWT)
 - Can be integrated with API Gateway for authentication
+
+## AWS Cognito Federated Identity Pools
+
+- Goal:
+    - Provide direct access to AWS resources from the client side
+- How:
+    - Log in to a federated identity provider - or remain anonymous
+    - Get temporary AWS credentials from the Federated Identity Pool
+    - These credentials come with pre-defined IAM policies stating their permissions
+- Examples:
+    - Provide temporary access to write to a S3 bucket using Facebook login
