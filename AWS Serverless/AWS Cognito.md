@@ -11,3 +11,12 @@
     - **Cognito Sync:**
         - Used for synchronize data from a device to Cognito
         - Deprecated, replaced by AppSync
+
+## AWS Cognito User Pools
+
+- It is a serverless database for users of an application
+- it is a simple login provider: username (or email) / password combination
+- Possibility to verify emails/phone numbers and add MFA
+- Can enable Federated Identities (Facebook, Google, SAML, etc.). **This is not the same CIP (AWS Federated Identity)!**
+- Sends back a JSON Web Token (JWT)
+- Can be integrated with API Gateway for authentication
