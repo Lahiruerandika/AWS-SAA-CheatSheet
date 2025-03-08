@@ -31,3 +31,11 @@
     - These credentials come with pre-defined IAM policies stating their permissions
 - Examples:
     - Provide temporary access to write to a S3 bucket using Facebook login
+
+## AWS Cognito Sync
+
+- Deprecated - use AWS AppSync
+- Can be used for cross device synchronization from any platform: iOS, Android, etc.
+- It provides some offline capabilities, synchronization will happen when the device will come online
+- **Requires Federated Identity Pool in Cognito (not User Pool!)**
+- Data is stored in datasets, each dataset can have up to 1MB of data. We can have up to 20 datasets to synchronize
