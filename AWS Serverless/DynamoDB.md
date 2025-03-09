@@ -44,3 +44,14 @@
 - We can get up 10 nodes per cluster for cache
 - The cache is multi AZ (3 nodes minimum recommended for production)
 - It is secure (Encryption at rest with KMC, VPC, IAM, CloudTrail)
+
+## DynamoDB Streams
+
+- Changes in DynamoDB (Create, Update, Delete) can end up in a DynamoDB stream - change log of everything happened in the table
+- This stream can be read by AWS Lambda, with which we can do some integrations:
+    - React to changes in real time (example: welcome email to new users)
+    - Analytics
+    - Create derivative tables/views
+    - Insert into ElasticSearch
+- We can implement cross region replication using Stream
+- Streams has 24 hours of data retention
