@@ -55,3 +55,32 @@
     - Insert into ElasticSearch
 - We can implement cross region replication using Stream
 - Streams has 24 hours of data retention
+
+## DynamoDB - New Features
+
+- Transactions
+    - All or nothing type of operations
+    - We can coordinate insert, update and delete operations across multiple tables
+    - Include up to 10 unique items or up to 4MB of data per transaction
+- On-demand
+    - No capacity planning needed (WCU/RCU) - scales automatically
+    - It is 2.5x more expensive than provisioned capacity
+    - Helpful for spikes and unpredictable loads or if the application has a very low throughput
+
+## Security
+
+- We get VPC endpoints to access DynamoDB without internet
+- IAM policies
+- Encryption at rest using AWS KMS
+- Encryption at transit is handled by SSL/TLS
+- Backup and restore
+    - DynamoDB provides point in time restores  (just like any RDS)
+    - Backup does not have any performance impact on the tables
+- Global tables
+    - Multi region, fully replicated, high performance
+    - Dynamo provides active-active replication
+    - In order to be able to replicate data, DynamoDB Streams should be enabled
+
+## Migration
+
+- We can use DMS to migrate data to DynamoDB (from Mongo, Oracle, MySQL, st3, etc.)
