@@ -32,3 +32,15 @@
 - Option to setup auto-scaling of throughput to meet demand
 - Throughput can be exceeded temporarily using burst credits
 - If there are no more burst credits, we may get a "ProvisionedThroughputException" in which case it is advised to do exponential back-off retry
+
+## DynamoDB - DAX
+
+- DAX = DynamoDB Accelerator
+- Seamless cache for DynamoDB, no application re-write
+- Write go through DAX to DynamoDB
+- Micro second latency for cached reads and queries 
+- Solves the Hot Key problem (too many reads on one value)
+- Each cache entry has a 5 minute TTL by default
+- We can get up 10 nodes per cluster for cache
+- The cache is multi AZ (3 nodes minimum recommended for production)
+- It is secure (Encryption at rest with KMC, VPC, IAM, CloudTrail)
