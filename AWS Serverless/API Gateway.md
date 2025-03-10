@@ -11,3 +11,14 @@
 - It can transform and validate requests and responses
 - We can generate SDK and API specifications
 - We can cache API responses
+
+## API Gateway - Integrations
+
+- Lambda Functions
+    - It can invoke Lambda functions
+    - Easy way to expose REST API backed by AWS Lambda
+- HTTP
+    - Exposes HTTP endpoints in the back-end. Example: internal HTTP API on premise, Application Load Balancer, etc. By this we can add features like rate limiting, user authentication, API keys to existing back-ends
+- AWS Service
+    - We can expose any AWS API through API Gateway, examples: API for starting a Step Function workflow, API for posting a message to SQS
+
