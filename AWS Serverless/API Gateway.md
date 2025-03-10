@@ -33,3 +33,20 @@
 - Private:
     - Can only be accessed from a VPC using an ENI
     - We can use resource policies to define access
+
+## Security
+
+### IAM Permissions
+
+- We can give access to an API by creating an IAM policy authorization and attach it to an User/Role
+- API Gateway verifies IAM permissions passed by the calling application
+- Good practice to provide access within own infrastructure
+- It leverages Sig v4 signatures by adding the signature to a header 
+
+### Lambda Authorizer (Custom Authorizer)
+
+- Uses AWS Lambda to validate the token from a header
+- Optionally the result of the authentication can be cached
+- Helps to use OAuth/SAML/3rd party type of authentication
+- The lambda must return an IAM policy for the user
+
