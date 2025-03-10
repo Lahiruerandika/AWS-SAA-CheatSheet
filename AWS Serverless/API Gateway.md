@@ -50,3 +50,25 @@
 - Helps to use OAuth/SAML/3rd party type of authentication
 - The lambda must return an IAM policy for the user
 
+### Cognito User Pools
+
+- Cognito will manage the full user lifecycle
+- API gateway verifies identity automatically from AWS Cognito
+- No custom implementation is required
+- Cognito only helps with authentication, not authorization
+
+### Summary
+
+- IAM:
+    - Great for user/roles already within an AWS account
+    - Handles authentication + authorization
+    - Leverages Sig v4
+- Custom Authorizer:
+    - Great for 3rd party tokens
+    - Very flexible in terms of what IAM policy is returned
+    - Handles authentication + authorization
+    - We pay per lambda invocation
+- Cognito User Pools
+    - We manage our own user pool, which can be backed by Facebook, Google login, etc.
+    - There is no need to write custom code
+    - Authorization in the backend must be implemented
