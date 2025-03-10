@@ -22,3 +22,14 @@
 - AWS Service
     - We can expose any AWS API through API Gateway, examples: API for starting a Step Function workflow, API for posting a message to SQS
 
+## Endpoint Types
+
+- Edge-Optimized (default): for global clients
+    - Requests are routed through the CloudFormation Edge locations
+    - The API Gateway still lives in only one region
+- Regional:
+    - For clients within the same region
+    - Could manually be combined with CloudFront having more control over caching strategies and distributions
+- Private:
+    - Can only be accessed from a VPC using an ENI
+    - We can use resource policies to define access
