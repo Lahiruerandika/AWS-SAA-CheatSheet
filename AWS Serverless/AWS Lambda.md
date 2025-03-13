@@ -46,3 +46,40 @@
     - Ruby
     - Custom Runtime API (community supported, example Rust)
 - **Docker does not run on AWS Lambda!**
+
+## AWS Lambda Integrations
+
+- Main ones:
+    - API Gateway
+    - Kinesis
+    - DynamoDB
+    - S3
+    - CloudFront
+    - CloudWatch Events and EventBridge
+    - CloudWatch Logs
+    - SNS and SQS
+    - AWS Cognito
+
+## AWS Lambda Pricing
+
+- Up to date information can be found at: https://aws.amazon.com/lambda/pricing/
+- Pay per call:
+    - First 1 million requests are free
+    - $0.20 per 1 million requests
+- Pay per duration:
+    - 400K GB-seconds of compute time for free which means 400K seconds of running time if the function has 1GB of RAM, 3.2 million of seconds if the function requires 128 MB of RAM
+    - After that $1 for 600K GB-seconds
+- It is usually very cheap to run AWS Lambda functions
+
+## AWS Lambda Limits - per region
+
+- Execution:
+    - Memory allocation: 128 MB - 3008 MB (64 MB increments)
+    - Maximum execution time: 900 seconds (15 minutes)
+    - Environment variables: 4 KB
+    - Disk capacity in the function container (`/tmp`): 512 MB
+    - Concurrent executions: 1000 per account (can be increased after a request)
+- Deployment:
+    - Lambda function deployment size (compressed.zip): 50 MB
+    - Uncrompressed deployment size: 250 MB
+    - We can use `/tmp` directory to load other files at the startup
