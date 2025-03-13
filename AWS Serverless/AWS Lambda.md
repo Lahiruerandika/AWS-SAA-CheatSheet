@@ -83,3 +83,25 @@
     - Lambda function deployment size (compressed.zip): 50 MB
     - Uncrompressed deployment size: 250 MB
     - We can use `/tmp` directory to load other files at the startup
+
+## AWS Lambda@Edge
+
+- Used for running global Lambda functions alongside edge locations (for CDN for example)
+- Can be used for:
+    - To change CLoudFront requests and responses:
+        - After CloudFront receives a request from a  viewer (viewer request)
+        - Before CloudFront receives the request from the origin (origin request)
+        - After CloudFront receives the response from the origin (origin response)
+        - Before CloudFront forwards the response to the viewer (viewer response)
+    - Customize the CDN content
+- Use cases:
+    - Website security and privacy
+    - Dynamic Web Application at the Edge
+    - Search Engine Optimization (SEO)
+    - Intelligent Route across origins and data centers
+    - Bot mitigation at the Edge
+    - Real-time image transformation
+    - A/B testing
+    - User authentication and authorization
+    - User prioritization
+    - User tracking and analytics
