@@ -25,3 +25,8 @@
     - ElasticSearch
     - Kinesis Data Streams
     - DocumentDB
+
+## AWS Schema Conversion Tool (SCT)
+
+- Converts a database schema form one engine to another. Example: OLTP (SQL Server, Oracle) to MySQL, PostgreSQL, Aurora; OLAP (Teradata or Oracle) to Redshift
+- We do not need to use SCT if we are migration from the same DB engine to the same DB engine
