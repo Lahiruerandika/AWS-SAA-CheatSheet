@@ -62,7 +62,6 @@
 
 ## AWS Lambda Pricing
 
-- Up to date information can be found at: https://aws.amazon.com/lambda/pricing/
 - Pay per call:
     - First 1 million requests are free
     - $0.20 per 1 million requests
