@@ -70,5 +70,5 @@
     - We pay per lambda invocation
 - Cognito User Pools
     - We manage our own user pool, which can be backed by Facebook, Google login, etc.
-    - There is no need to write custom code
     - Authorization in the backend must be implemented
+    - There is no need to write custom code
