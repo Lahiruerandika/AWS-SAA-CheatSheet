@@ -80,7 +80,3 @@
     - Multi region, fully replicated, high performance
     - Dynamo provides active-active replication
     - In order to be able to replicate data, DynamoDB Streams should be enabled
-
-## Migration
-
-- We can use DMS to migrate data to DynamoDB (from Mongo, Oracle, MySQL, st3, etc.)
