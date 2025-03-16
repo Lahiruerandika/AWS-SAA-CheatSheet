@@ -19,3 +19,12 @@
 - KSM encryption is mandatory
 - Can integrate with ClouDFormation
 - In general a more expensive solution for storing secrets
+
+### SSM Parameter Store
+
+- Has simple API
+- Does not have secret rotation built-in (can be done manually)
+- KMS encryption is optional
+- Can integrate with CloudFormation
+- We can pull a secret from Secrets Manager using the SSM Parameter Store API
+- It is cheaper than the Secrets Manager
