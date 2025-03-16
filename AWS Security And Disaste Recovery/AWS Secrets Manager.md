@@ -9,3 +9,13 @@
 - Mostly meant for RDS integration
 - Pricing: $0.40 per secret per month / $0.05 per 10K API calls + 30 day free trial
 - Stores key-value pairs for secrets
+
+## SSM Parameter Store vs Secrets Manager
+
+### Secrets Manager
+
+- Automatic rotation of secrets with AWS Lambda
+- Direct integration with RDS, Redshift, DocumentDB
+- KSM encryption is mandatory
+- Can integrate with ClouDFormation
+- In general a more expensive solution for storing secrets
