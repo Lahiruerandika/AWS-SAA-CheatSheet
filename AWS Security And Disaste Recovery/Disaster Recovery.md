@@ -27,3 +27,24 @@
     - Very low RTO - very expensive
     - Full production scale is running on the cloud
 - All AWS Multi Region
+
+## Disaster Recovery Tips
+
+- Backups:
+    - EBS Snapshots, RDS, automated backups, snapshots, etc.
+    - Regular pushes to S3/S3 IA/Glacier, Lifecycle Policy, Cross region replication
+    - From on-premise: Snowball or Storage Gateway
+- High Availability:
+    - Use Route53 to migrate DNS over from region to region
+    - RDS Multi-AZ, ElastiCache Multi-AZ, EFS, S3
+    - Site to site VPN as recovery from Direct Connect
+- Replication:
+    - RDS Replication (Cross Region), AWS Aurora + Global Databases
+    - Database replication from on-premise to RDS
+    - Storage Gateway
+- Automation:
+    - CloudFormation/Elastic Beanstalk to recreate a whole new environment
+    - Recover/Reboot EC2 instances with CloudWatch if alarm is in fail state (ALARM)
+    - AWS Lambda for customized automation
+- Chaos
+    - Netflix has a "simian-army" randomly terminating EC2 instances
