@@ -13,3 +13,11 @@
     - Over the internet / Site-to-Site VPN:
         - Immediate to setup
         - It will take approximately 185 days
+    - Over direct connect (1 Gbps)
+        - Will take long time for the initial setup (over 1 month)
+        - The data will be transferred on aprox. 18.5 days
+    - Snowball:
+        - Will take 2 to 3 snowballs in parallel
+        - Takes about 1 week for end-to-end transfer
+        - Can be combined with DMS
+- For on-going replication/transfers: Site-to-Site VPN or DX with DMS or DataSync
