@@ -7,3 +7,18 @@
 - Configuration management using IAM policies
 - Notification with CloudWatch events
 - Integration with CloudFormation
+
+## SSM Parameter Store Hierarchy
+
+- Example of hierarchy:
+
+    - /my-department/
+        - my-app/
+            - dev/
+                - db-url
+                - db-password
+            - prod/
+                - db-url
+                - db-password
+        - other-app
+    - /other-department
