@@ -38,3 +38,26 @@
 - Max size of a parameter: 8KB
 - Pricing: 0.05$ per advanced parameter per month
 - Parameter policies: YES
+
+## Policies for Advanced Parameters
+
+- Allow assigning a TTL for a parameter to force updating or deleting sensitive data
+- We can assign multiple policies at a time
+
+## SSM CLI
+
+- Get parameters
+    ```
+    aws ssm get-parameters --names /my-app/dev/db-url /my-app/dev/db-password
+    ```
+
+- Get parameters decrypted
+    ```
+    aws ssm get-parameters --names /my-app/dev/db-url /my-app/dev/db-password --with-decryption
+    ```
+
+- Get parameters by path: gets multiple parameters recursively
+    ```
+    aws ssm get-parameters-by-path --path /my-app/ --recursive
+    ```
+
