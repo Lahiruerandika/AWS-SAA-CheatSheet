@@ -39,3 +39,18 @@
     - `ECS_AVAILABLE_LOGGING_DRIVERS`: used for enabling CloudWatch logging
     - `ECS_ENABLE_TASK_IAM_ROLE`: enable IAM roles for an ECS tasks
 
+### ECS - IAM Task Roles
+
+- The EC2 instance running the containers should have an IAM role allowing it to access the ECS service for the ECS agent
+- Each task inherits EC2 permissions
+- ECS IAM task role: role dedicated to each task separately
+- Define a tas role: we can use the `taskRoleArn` parameter in the task definition
+
+### Fargate
+
+- When launching an ECS cluster, we have to create our EC2 instances, which means basically we are managing the underlying infrastructure
+- With Fargate, this is eliminated since this AWS service is serverless
+- We have to provide task definitions and AWS will run the container for us
+- To scale we just have to increase the task number
+
+
