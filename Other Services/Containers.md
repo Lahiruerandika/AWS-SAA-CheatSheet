@@ -54,3 +54,16 @@
 - To scale we just have to increase the task number
 
 
+## ECR - Elastic Container Registry
+
+- Store, manage and deploy container in AWS
+- Fully integrated with IAM and ECS
+- Data is sent over HTTPS and encrypted at rest
+
+## Amazon EKS
+
+- EKS = Elastic Kubernetes Service
+- It is a way to launch managed Kubernetes clusters on AWS
+- Kubernetes is an open-source system for automatic deployment, scaling and management of containerized applications
+- It is an alternative to ECS having a different API
+- EKS supports EC2 if we want to deploy worker nodes or Fargate to deploy serverless containers
