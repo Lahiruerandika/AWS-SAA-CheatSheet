@@ -19,4 +19,13 @@
 - ECS tasks + definition: containers running to create the application
 - ECS IAM roles: roles assigned to ECS tasks
 
+## ECS - ALB integration
+
+- Application Load Balancer has a direct integration feature with ECS called port mapping
+- This allows us to run multiple instances of the same application on the same EC2 machine
+- Use cases:
+    - Increase resiliency even if the application is running on one EC2
+    - Maximize utilization of CPU cores
+    - Ability to perform rolling updates without impacting application uptime
+
 
