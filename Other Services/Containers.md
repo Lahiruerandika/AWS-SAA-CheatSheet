@@ -29,3 +29,13 @@
     - Ability to perform rolling updates without impacting application uptime
 
 
+### ECS Setup and Config file
+
+- Run an EC2 instance, install the ECS agent with ECS config file or use ECS-ready Linux AMI (still need to modify the config file)
+- ECS Config file is at `/etc/ecs/ecs.config`
+- Config settings:
+    - `ECS_CLUSTER`: to which cluster belongs the EC2 instance
+    - `ECS_ENGINE_AUTH_DATA`: authenticate to private registries
+    - `ECS_AVAILABLE_LOGGING_DRIVERS`: used for enabling CloudWatch logging
+    - `ECS_ENABLE_TASK_IAM_ROLE`: enable IAM roles for an ECS tasks
+
