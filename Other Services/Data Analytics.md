@@ -19,3 +19,4 @@
 - Provides automatic code generation if we want to customize the Apache Spark code
 - Sources: Aurora, RDS, Redshift, S3
 - Sinks: S3, Redshift, etc
+- Glue Data Catalog: Metadata (definition and schema) of the Source Tables
