@@ -33,3 +33,33 @@
 - We can edit previous templates. We have to reupload a new version of the template to S3
 - Stack are identified by a name
 - Deleting a stack will delete every resource created
+
+## Deploy CloudFormation Templates
+
+- Manual way:
+    - Editing templates in the CloudFormation Designer
+    - Using the console to input parameters
+- Automated way:
+    - Editing templates in a YAML file
+    - Using the AWS CLI to deploy templates
+
+## CloudFormation Building Blocks
+
+- Template components:
+    - Resources: declared AWS resources in the template (mandatory)
+    - Parameters: dynamic inputs for the template
+    - Mappings: static variables in the templates
+    - Outputs: references to what has been created
+    - Conditionals: list of conditions to perform resource creation
+    - Metadata
+- Template helpers:
+    - References
+    - Functions
+
+## StackSets
+
+- Create, update or delete stacks across multiple accounts and regions with a single operation
+- An administration account needs to create a stack set
+- Trusted accounts can create, update delete stack instances from the stack set
+- When a stack set is updated, all the associated stack instances are updated through all accounts and regions
+
