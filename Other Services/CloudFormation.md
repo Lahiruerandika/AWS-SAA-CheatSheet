@@ -10,3 +10,19 @@
 - CloudFormation is a declarative way of outlining AWS infrastructure for any resources
 - In the CloudFormation templates we specify the resources needed to be instantiated
 - CloudFormation will create those in the right order with exact configuration that we specify
+
+## Benefits
+
+- Infrastructure as code:
+    - No resources are manually created, which is excellent for control
+    - Code can be version controlled
+    - Changes to the infrastructure are reviewed through code
+- Cost:
+    - Each resource within a CloudFormation stack is tagged with an identifier, meaning we can easily see how much a stack costs
+    - We can estimate costs by using a CloudFormation template
+- Productivity:
+    - Ability to destroy and re-create an infrastructure on the cloud on the fly
+    - Automated generation of Diagram for the templates
+    - Declarative programming, meaning no need to figure out ordering and orchestration
+- Separation of concerns:
+    - We can create as many stacks as we need, example: VPC stack, Network stack, App stack
