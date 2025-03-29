@@ -26,3 +26,10 @@
     - Declarative programming, meaning no need to figure out ordering and orchestration
 - Separation of concerns:
     - We can create as many stacks as we need, example: VPC stack, Network stack, App stack
+
+## How CloudFormation Works
+
+- Templates have to be uploaded in S3 and then references in CloudFormation
+- We can edit previous templates. We have to reupload a new version of the template to S3
+- Stack are identified by a name
+- Deleting a stack will delete every resource created
