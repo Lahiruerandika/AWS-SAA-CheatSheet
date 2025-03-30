@@ -33,4 +33,14 @@
 - It is secure, encrypted and provides network isolation
 - Integrates with Microsoft Active Directory
 
+## AWS Appsync
+
+- Store and sync data across mobile and web apps in real time
+- Makes use of GraphQL
+- Client code can be generated automatically
+- Provides integration with DynamoDB/Lambda
+- Proves real-time subscriptions, offline data synchronization (replacement for AWS Cognito Sync)
+- Provides fine grained security
+
+
 
