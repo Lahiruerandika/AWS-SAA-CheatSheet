@@ -25,3 +25,12 @@
     - If we need external signals to intervene in the process
     - If we need child processes that return values to parent processes
 
+## AWS WorkSpaces
+
+- It is a managed, secure cloud desktop
+- Great to eliminate management of on-premise VID (Virtual Desktop Infrastructure)
+- It is on-demand, pay per usage
+- It is secure, encrypted and provides network isolation
+- Integrates with Microsoft Active Directory
+
+
