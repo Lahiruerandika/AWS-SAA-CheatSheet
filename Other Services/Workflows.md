@@ -13,3 +13,15 @@
     - Data processing
     - Web applications
     - Any other workflow
+
+## AWS SWF - Simple Workflow Service
+
+- Coordinate work amongst applications
+- Code runs on EC2 (not serverless)
+- 1 year max runtime
+- Has the concept of activity step and decision step
+- Has a builtin human intervention step as well
+- **Step Functions is the recommended service to be used for newer applications, except**:
+    - If we need external signals to intervene in the process
+    - If we need child processes that return values to parent processes
+
