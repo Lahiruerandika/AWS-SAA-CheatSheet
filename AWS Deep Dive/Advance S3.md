@@ -37,6 +37,7 @@
 - To copy between replicas, an IAM permission must be assigned to the source bucket.
 
 ### Replication Notes
+
 - Only new objects are replicated after replication is activated (no retroactive replication).
 - For **DELETE** operations:
     - Deletion **without** a version ID: A delete marker is added to the object. **Deletion is not replicated**.
@@ -44,6 +45,7 @@
 - **There is no replication chaining!**
 
 ## S3 Pre-Signed URLs
+
 - We can generate pre-signed URLs using the SDK and the CLI.
 - Pre-signed URLs have a default expiration time of **3600 seconds**. This can be changed using the `--expires-in` argument.
 - Users with a pre-signed URL will inherit the permissions of the user who generated the URL.
@@ -59,12 +61,14 @@
 - **Amazon S3 Reduced Redundancy Storage (deprecated)**
 
 ### S3 Standard - General Purpose
+
 - High durability (99.999999999% or **"11 nines"**) across multiple AZs.
 - SLA: If we store 10 million objects in S3, we can expect to lose **one file per 10,000 years**.
 - **99.99% availability** per year.
 - Can sustain **two concurrent facility failures**.
 
 ### S3 Standard - Infrequent Access
+
 - Suitable for data that is accessed less frequently but should be retrieved quickly when needed.
 - **Same durability** as General Purpose, but **99.9% availability**.
 - **Lower cost** than General Purpose.
