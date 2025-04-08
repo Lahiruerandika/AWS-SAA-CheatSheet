@@ -77,6 +77,7 @@
     - Must manage scaling (shard splitting / merging)
     - Can store data into stream, data can be stored from 1 to 7 days
     - Data can be read by multiple consumers
+    
 - Firehose:
     - Fully managed, sends data to S3, Redshift, Splunk, ElasticSearch
     - Serverless, data transformation can be done with Lambda
