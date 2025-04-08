@@ -8,6 +8,7 @@
 ## CloudFront Origins
 
 - The location of the data distributed by CloudFront can be:
+
     - **S3 bucket:**
         - Recommended for distributing files and caching them at edge locations.
         - Offers enhanced security with CloudFront **Origin Access Identity (OAI)**.
